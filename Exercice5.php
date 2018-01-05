@@ -1,24 +1,29 @@
 <?php
-if (isset($_POST['login']) && $_POST['password']) {
-    $temps = 365 * 24 * 3600;
-    setcookie('login', $_POST['login'], time() + $temps, null, false, true);
-    setcookie('password', $_POST['password'], time() + $temps, null, false, true);
+// On vérifie que les données soient bien rentrées.
+if (isset($_POST['pseudo']) && ($_POST['password'])) {
+    // On écrase les cookies créés lors des précedents exercices.
+    setcookie('pseudo', $_POST['pseudo'], time() + 365 * 24 * 3600, '/', null, false, true);
+    setcookie('password', $_POST['password'], time() + 365 * 24 * 3600, '/', null, false, true);
 }
-?>
-<!DOCTYPE>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Partie 8 Exercice 4</title>
-    </head>
-    <body>
-        <form action="index.php" method="post">
-            <label>Name :</label> <input type="text" name="login">
-            <label>Password :</label><input type="password" name="password">
-            <input type="submit" value="Valider">
-        </form>
+?><!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>exercice 5 partie 8 php</title>
+  </head>
+  <body>
+    <form class="form" action="index.php" method="POST">
+      <label for="pseudo">Pseudo : </label>
+      <input type="text" name="pseudo" placeholder="pseudo" />
+      <label for="password">Mot de passe : </label>
+      <input type="password" name="password" placeholder="mot de passe" />
+      <button type="submit" name="validate">Valider</button>
+    </form>
+    <p>
         <?php
-        echo $_COOKIE['login'] . ' ' . $_COOKIE['password'];
+        echo 'Bonjour ' . htmlspecialchars($_COOKIE['pseudo']) . htmlspecialchars($_COOKIE['password']);
         ?>
-    </body>
+    </p>
+    <a href="../index.php">Retour</a>
+  </body>
 </html>

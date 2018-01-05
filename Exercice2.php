@@ -1,21 +1,26 @@
 <?php
+//On démarre la session
 session_start();
-$_SESSION['prenom'] = 'Pauline';
-$_SESSION['nom'] = 'Michalowski';
+//On définit  les variables de session
+$_SESSION['firstname'] = 'Pauline';
+$_SESSION['name'] = 'Michalowski';
 $_SESSION['age'] = 23;
 ?>
-<!DOCTYPE>
-<html>
+<!DOCTYPE html>
+<html lang="fr">
     <head>
-        <title>Exercice 2</title>
+        <meta charset="utf-8">
+        <title>exercice2 index.php</title>
     </head>
     <body>
-        <?php
-        $_SESSION['prenom'] = 'Pauline';
-        $_SESSION['nom'] = 'Michalowski';
-        $_SESSION['age'] = 23;
-        ?>
-        <p>Salut <?php echo $_SESSION['prenom'] . ' ' . $_SESSION['nom'] . '. Tu as ' . $_SESSION['age'] . ' ans'; ?></p>
-        <a href="Page2Ex2.php">Test</a>
+        <h1>Partie 8 PHP</h1>
+        <h2>Exercice2</h2>
+        <p>Bienvenue sur la page d'accueil</p>
+        <a href="user.php" title="Profil"><input type="button" value="Profil Utilisateur" name="profil"></a>
+        <a href="../index.php" title="Accueil"><input type="button" value="Accueil partie 8" name="accueil"></a>
     </body>
 </html>
+<?php
+//ferme provisoirement la session sans la détruire
+session_write_close();
+?>
